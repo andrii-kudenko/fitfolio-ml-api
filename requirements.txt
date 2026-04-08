@@ -1,4 +1,6 @@
 fastapi
 pydantic
+python-dotenv
 sentence-transformers
 uvicorn[standard]
+openai>=1.0.0
