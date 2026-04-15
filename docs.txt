@@ -54,6 +54,14 @@ After starting, the API is available at:
   http://127.0.0.1:8000/docs  (Swagger UI)
   http://127.0.0.1:8000/redoc (ReDoc)
 
+AUTOMATED TESTS (pytest)
+------------------------
+# From fitfolio-ml-api with venv activated:
+pip install -r requirements.txt
+pytest tests/ -q
+# Optional: live OpenAI call (uses credits)
+# OPENAI_API_KEY=... pytest tests/test_api.py::test_generate_insights_live_openai_returns_structured_response
+
 QUICK TEST
 ----------
 # Health / root (if you add a root route, or use /docs)
@@ -72,4 +80,8 @@ DEACTIVATE VENV
 ---------------
 deactivate
 
+================================================================================
+Full ML demo / supervisor testing playbook (search, enrichment, review insights):
+  ../docs/ML_TESTING_PLAYBOOK.md
+Repo smoke script: ../scripts/ml-demo-smoke.sh
 ================================================================================
