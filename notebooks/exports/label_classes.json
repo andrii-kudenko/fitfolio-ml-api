@@ -1,0 +1,26 @@
+{
+  "category": [
+    "Accessories",
+    "Apparel",
+    "Shoes"
+  ],
+  "gender": [
+    "men",
+    "unisex",
+    "women"
+  ],
+  "color": [
+    "beige",
+    "black",
+    "blue",
+    "brown",
+    "green",
+    "grey",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "white",
+    "yellow"
+  ]
+}

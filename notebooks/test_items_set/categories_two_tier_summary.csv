@@ -1,0 +1,21 @@
+category_id,category_name,category_slug,child_count,children_names,children_slugs
+00000000-0000-0000-0000-000000000101,Tops,tops,10,T-Shirts; Long Sleeve Tops; Shirts (Button-Up); Polos; Tank Tops; Crop Tops; Bodysuits; Sweaters; Hoodies; Sweatshirts,t-shirts; long-sleeve-tops; button-up-shirts; polos; tank-tops; crop-tops; bodysuits; sweaters; hoodies; sweatshirts
+00000000-0000-0000-0000-000000000102,Bottoms,bottoms,8,Jeans; Pants / Trousers; Chinos; Joggers; Sweatpants; Leggings; Shorts; Skirts,jeans; pants_and_trousers; chinos; joggers; sweatpants; leggings; shorts; skirts
+00000000-0000-0000-0000-000000000103,Dresses & Jumpsuits,dresses-and-jumpsuits,3,Dresses; Jumpsuits; Rompers,dresses; jumpsuits; rompers
+00000000-0000-0000-0000-000000000104,Outerwear,outerwear,6,Jackets; Coats; Parkas; Vests; Blazers; Windbreakers,jackets; coats; parkas; vests; blazers; windbreakers
+00000000-0000-0000-0000-000000000105,Suits & Sets,suits-and-sets,3,"Suits; Suit Separates (Blazers, Dress Pants); Matching Sets",suits; suit-separates; matching-sets
+00000000-0000-0000-0000-000000000106,Activewear,activewear,5,Sports Bras; Workout Tops; Workout Bottoms; Compression; Tracksuits,sports-bras; workout-tops; workout-bottoms; compression; tracksuits
+00000000-0000-0000-0000-000000000107,Underwear & Sleepwear,underwear-and-sleepwear,5,Underwear; Bras; Socks; Sleepwear / Pajamas; Loungewear,underwear; bras; socks; sleepwear-and-pajamas; loungewear
+00000000-0000-0000-0000-000000000108,Swimwear,swimwear,4,One-Piece; Bikini; Swim Trunks; Rash Guards,one-piece; bikini; swim-trunks; rash-guards
+00000000-0000-0000-0000-000000000401,Athletic,athletic-shoes,4,Running Shoes; Training Shoes; Basketball Shoes; Soccer Cleats,running-shoes; training-shoes; basketball-shoes; soccer-cleats
+00000000-0000-0000-0000-000000000402,Casual,casual-shoes,2,Sneakers; Slip-ons,sneakers; slip-ons
+00000000-0000-0000-0000-000000000403,Formal,formal-shoes,2,Dress Shoes; Heels,dress-shoes; heels
+00000000-0000-0000-0000-000000000404,Boots,boots,4,Ankle Boots; Chelsea Boots; Winter Boots; Hiking Boots,ankle-boots; chelsea-boots; winter-boots; hiking-boots
+00000000-0000-0000-0000-000000000405,Sandals,sandals-group,3,Slides; Sandals; Flip-Flops,slides; sandals-items; flip-flops
+00000000-0000-0000-0000-000000000601,Bags,bags,5,Backpacks; Crossbody Bags; Tote Bags; Handbags; Wallets,backpacks; crossbody-bags; tote-bags; handbags; wallets
+00000000-0000-0000-0000-000000000602,Headwear,headwear,3,Caps; Beanies; Hats,caps; beanies; hats
+00000000-0000-0000-0000-000000000603,Jewelry,jewelry,4,Necklaces; Rings; Bracelets; Earrings,necklaces; rings; bracelets; earrings
+00000000-0000-0000-0000-000000000604,Belts,belts-group,1,Belts,belts-items
+00000000-0000-0000-0000-000000000605,Eyewear,eyewear,2,Sunglasses; Glasses Accessories,sunglasses; glasses-accessories
+00000000-0000-0000-0000-000000000606,Watches,watches-group,1,Watches,watches-items
+00000000-0000-0000-0000-000000000607,Scarves & Gloves,scarves-and-gloves,2,Scarves; Gloves,scarves; gloves

@@ -1,12 +1,18 @@
+from __future__ import annotations
+
+import io
 import json
 import os
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, File, HTTPException, UploadFile
 from openai import OpenAI
+from PIL import Image
 from pydantic import BaseModel, Field
 from sentence_transformers import SentenceTransformer
+
+from item_classifier import ClassifierArtifacts, load_classifier, predict_from_pil
 
 _ML_DIR = Path(__file__).resolve().parent
 _REPO_ROOT = _ML_DIR.parent
@@ -25,6 +31,17 @@ app = FastAPI()
 print("Loading sentence transformer model...", flush=True)
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 print("Model loaded successfully!", flush=True)
+
+print("Loading item image classifier...", flush=True)
+_classifier: ClassifierArtifacts | None = load_classifier(_ML_DIR)
+if _classifier is not None:
+    print("Item classifier loaded (POST /classify-item-image).", flush=True)
+else:
+    print(
+        "Item classifier skipped: place resnet_item_classifier.pt and label_classes.json under "
+        "fitfolio-ml-api/notebooks/exports or fitfolio-ml-api/artifacts, or set CLASSIFIER_DIR.",
+        flush=True,
+    )
 
 _openai_client: OpenAI | None = None
 
@@ -67,6 +84,46 @@ def embed(req: EmbedRequest):
     emb = model.encode(req.text, normalize_embeddings=True)
     print(f"Generated embedding of length {len(emb)}", flush=True)
     return EmbedResponse(embedding=emb.tolist())
+
+
+# --- Item image classifier (ResNet) ----------------------------------------
+
+
+class ClassifyItemImageResponse(BaseModel):
+    category: str
+    gender: str
+    color: str
+    categoryConfidence: float = Field(ge=0.0, le=1.0)
+    genderConfidence: float = Field(ge=0.0, le=1.0)
+    colorConfidence: float = Field(ge=0.0, le=1.0)
+
+
+@app.post("/classify-item-image", response_model=ClassifyItemImageResponse)
+async def classify_item_image(file: UploadFile = File(...)):
+    if _classifier is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Classifier not loaded: missing weights or label_classes.json (see server logs).",
+        )
+    try:
+        raw = await file.read()
+        if not raw:
+            raise HTTPException(status_code=400, detail="Empty file")
+        img = Image.open(io.BytesIO(raw))
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid image: {e}") from e
+
+    out = predict_from_pil(_classifier, img)
+    return ClassifyItemImageResponse(
+        category=out["category"],
+        gender=out["gender"],
+        color=out["color"],
+        categoryConfidence=out["categoryConfidence"],
+        genderConfidence=out["genderConfidence"],
+        colorConfidence=out["colorConfidence"],
+    )
 
 
 # --- Review insights (LLM) -------------------------------------------------
